@@ -45,7 +45,7 @@
 
 	const shuffleTeam = () => {
 	  let members = teamMembers.split(",");
-	  members = members.filter(v => v.trim() !== "");
+	  members = members.map(v => v.trim()).filter(v => v !== "");
 
 	  //shuffle
 	  for (let i = members.length - 1; i > 0; i--) {
@@ -54,14 +54,8 @@
 	  }
 
 	  const halfIdx = Math.ceil(members.length / 2);
-	  team1 = members
-	    .splice(0, halfIdx)
-	    .map(v => v.trim())
-	    .join(", ");
-	  team2 = members
-	    .splice(-halfIdx)
-	    .map(v => v.trim())
-	    .join(", ");
+	  team1 = members.splice(0, halfIdx).join(", ");
+	  team2 = members.splice(-halfIdx).join(", ");
 	};
 </script>
 
